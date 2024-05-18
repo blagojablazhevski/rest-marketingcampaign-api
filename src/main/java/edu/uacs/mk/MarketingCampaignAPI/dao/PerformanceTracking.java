@@ -10,7 +10,7 @@ public class PerformanceTracking {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long trackingId;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "ad_id")
     private Ad ad;
 
@@ -22,5 +22,51 @@ public class PerformanceTracking {
 
     private BigDecimal costPerClick;
 
-    // Getters and setters
+    public Long getTrackingId() {
+        return trackingId;
+    }
+
+    public void setTrackingId(Long trackingId) {
+        this.trackingId = trackingId;
+    }
+
+    public Ad getAd() {
+        return ad;
+    }
+
+    public void setAd(Ad ad) {
+        this.ad = ad;
+    }
+
+    public int getClicks() {
+        return clicks;
+    }
+
+    public void setClicks(int clicks) {
+        this.clicks = clicks;
+    }
+
+    public int getImpressions() {
+        return impressions;
+    }
+
+    public void setImpressions(int impressions) {
+        this.impressions = impressions;
+    }
+
+    public BigDecimal getCost() {
+        return cost;
+    }
+
+    public void setCost(BigDecimal cost) {
+        this.cost = cost;
+    }
+
+    public BigDecimal getCostPerClick() {
+        return costPerClick;
+    }
+
+    public void setCostPerClick(BigDecimal costPerClick) {
+        this.costPerClick = costPerClick;
+    }
 }

@@ -19,6 +19,6 @@ public class GoalService {
 
     public Goal getGoalById(Long id) {
         return goalRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Goal not found with id: " + id));
+                .orElseThrow(() -> new RuntimeException("Goal with id " + id + " not found."));
     }
 }

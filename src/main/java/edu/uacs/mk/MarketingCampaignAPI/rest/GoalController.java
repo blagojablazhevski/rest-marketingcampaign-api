@@ -18,8 +18,6 @@ import java.util.Optional;
 public class GoalController {
     @Autowired
     GoalService goalService;
-    @Autowired
-    private GoalRepository goalRepository;
 
     @GetMapping
     List<Goal> getGoals() {

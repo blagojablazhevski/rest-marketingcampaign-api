@@ -19,7 +19,7 @@ public class CampaignTypeService {
 
     public CampaignType getCampaignTypeById(Long id) {
         return campaignTypeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Campaign Type not found with id: " + id));
+                .orElseThrow(() -> new RuntimeException("Campaign Type with id " + id + " not found."));
     }
 
 }
