@@ -28,4 +28,15 @@ public class TargetAudienceController {
         return targetAudienceService.create(targetAudience);
     }
 
+    @DeleteMapping("/{id")
+    void delete(@PathVariable("id") Long id){
+        targetAudienceService.delete(id);
+    }
+
+    @PutMapping
+    TargetAudience update(@RequestBody TargetAudience targetAudience){
+        return targetAudienceService.update(targetAudience);
+    }
+
+
 }

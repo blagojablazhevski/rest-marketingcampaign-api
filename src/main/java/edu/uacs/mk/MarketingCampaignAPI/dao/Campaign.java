@@ -2,6 +2,7 @@ package edu.uacs.mk.MarketingCampaignAPI.dao;
 
 import jakarta.persistence.*;
 
+import javax.sound.midi.Track;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -18,6 +19,18 @@ public class Campaign {
     @ManyToOne
     @JoinColumn(name = "goal_id")
     private Goal goal;
+
+    @OneToOne
+    @JoinColumn(name = "target_id")
+    private TargetAudience targetAudience;
+
+    public TargetAudience getTargetAudience() {
+        return targetAudience;
+    }
+
+    public void setTargetAudience(TargetAudience targetAudience) {
+        this.targetAudience = targetAudience;
+    }
 
     private String campaignName;
 

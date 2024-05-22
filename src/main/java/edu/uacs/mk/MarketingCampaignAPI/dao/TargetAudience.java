@@ -8,6 +8,10 @@ public class TargetAudience {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long targetingId;
 
+    @OneToOne
+    @JoinColumn(name = "campaign_id")
+    private Campaign campaign;
+
     private String region;
 
     private String ageRange;

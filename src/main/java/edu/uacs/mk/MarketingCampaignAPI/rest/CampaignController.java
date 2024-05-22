@@ -24,8 +24,8 @@ public class CampaignController {
     }
 
     @PostMapping
-    Campaign create(@RequestBody Campaign campaign, @RequestParam Long goalId, @RequestParam Long campaignTypeId){
-        return campaignService.create(campaign, goalId, campaignTypeId);
+    Campaign create(@RequestBody Campaign campaign, @RequestParam Long goalId, @RequestParam Long campaignTypeId, @RequestParam Long targetAudienceId){
+        return campaignService.create(campaign, goalId, campaignTypeId, targetAudienceId);
     }
 
     @PutMapping
@@ -47,4 +47,11 @@ public class CampaignController {
     Campaign updateCampaignType(@PathVariable Long campaignId, @PathVariable Long typeId) {
         return campaignService.updateCampaignType(campaignId, typeId);
     }
+
+    @PutMapping("/{targetAudienceId}/campaignType/{targetAudienceId}")
+    Campaign updateTargetAudience(@PathVariable Long campaignId, @PathVariable Long targetAudienceId) {
+        return campaignService.updateTargetAudience(campaignId, targetAudienceId);
+    }
 }
+
+

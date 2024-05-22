@@ -1,5 +1,6 @@
 package edu.uacs.mk.MarketingCampaignAPI.service;
 
+import edu.uacs.mk.MarketingCampaignAPI.dao.Campaign;
 import edu.uacs.mk.MarketingCampaignAPI.dao.TargetAudience;
 import edu.uacs.mk.MarketingCampaignAPI.dao.TargetAudienceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,12 @@ public class TargetAudienceService {
 
     public TargetAudience create(TargetAudience targetAudience){
         return targetAudienceRepository.save(targetAudience);
+    }
+
+    public TargetAudience update(TargetAudience targetAudience) {
+        return targetAudienceRepository.save(targetAudience);
+    }
+    public void delete(Long id) {
+       targetAudienceRepository.deleteById(id);
     }
 }

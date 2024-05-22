@@ -14,6 +14,8 @@ public class CampaignService {
     private CampaignRepository campaignRepository;
     @Autowired
     private GoalRepository goalRepository;
+    @Autowired
+    private TargetAudienceRepository targetAudienceRepository;
 
     public List<Campaign> getAllCampaigns() {
         return campaignRepository.findAll();
@@ -24,7 +26,7 @@ public class CampaignService {
                 .orElseThrow(() -> new RuntimeException("Campaign with id " + id + " not found."));
     }
 
-    public Campaign create(Campaign campaign, Long goalId, Long campaignTypeId) {
+    public Campaign create(Campaign campaign, Long goalId, Long campaignTypeId, Long targetAudienceId) {
         Goal goal = goalRepository.findById(goalId)
                 .orElseThrow(() -> new RuntimeException("Goal with id " + goalId + " not found."));
 
@@ -34,6 +36,11 @@ public class CampaignService {
                 .orElseThrow(() -> new RuntimeException("Campaign type with id " + campaignTypeId + " not found."));
 
         campaign.setCampaignType(campaignType);
+
+        TargetAudience targetAudience = targetAudienceRepository.findById(targetAudienceId)
+                .orElseThrow(() -> new RuntimeException("Target audience with id " + targetAudienceId + " not found."));
+
+        campaign.setTargetAudience(targetAudience);
 
         return campaignRepository.save(campaign);
     }
@@ -66,6 +73,18 @@ public class CampaignService {
                 .orElseThrow(() -> new RuntimeException("CampaignType with id " + typeId + " not found."));
 
         campaign.setCampaignType(type);
+
+        return campaignRepository.save(campaign);
+    }
+
+    public Campaign updateTargetAudience(Long campaignId, Long targetAudienceId) {
+        Campaign campaign = campaignRepository.findById(campaignId)
+                .orElseThrow(() -> new RuntimeException("Campaign with id " + campaignId + " not found."));
+
+        TargetAudience targetAudience = targetAudienceRepository.findById(targetAudienceId)
+                .orElseThrow(() -> new RuntimeException("CampaignType with id " + targetAudienceId + " not found."));
+
+        campaign.setTargetAudience(targetAudience);
 
         return campaignRepository.save(campaign);
     }

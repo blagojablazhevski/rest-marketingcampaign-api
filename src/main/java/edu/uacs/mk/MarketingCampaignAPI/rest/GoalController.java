@@ -1,8 +1,6 @@
 package edu.uacs.mk.MarketingCampaignAPI.rest;
 
-import edu.uacs.mk.MarketingCampaignAPI.dao.CampaignType;
 import edu.uacs.mk.MarketingCampaignAPI.dao.Goal;
-import edu.uacs.mk.MarketingCampaignAPI.dao.GoalRepository;
 import edu.uacs.mk.MarketingCampaignAPI.service.GoalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("goal")
