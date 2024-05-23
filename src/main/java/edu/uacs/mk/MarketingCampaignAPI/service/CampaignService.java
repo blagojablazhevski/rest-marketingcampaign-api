@@ -45,8 +45,16 @@ public class CampaignService {
         return campaignRepository.save(campaign);
     }
 
-    public Campaign update(Campaign campaign) {
-        return campaignRepository.save(campaign);
+    public Campaign update(Long id, Campaign campaign) {
+        Campaign oldCampaign = campaignRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Campaign with id " + id + " not found."));
+
+        oldCampaign.setBudget(campaign.getBudget());
+        oldCampaign.setStartDate(campaign.getStartDate());
+        oldCampaign.setEndDate(campaign.getEndDate());
+        oldCampaign.setCampaignName(campaign.getCampaignName());
+
+        return campaignRepository.save(oldCampaign);
     }
 
     public void delete(Long id) {
@@ -87,5 +95,13 @@ public class CampaignService {
         campaign.setTargetAudience(targetAudience);
 
         return campaignRepository.save(campaign);
+    }
+
+    public List<Campaign> getCampaignsByName(String name) {
+        return campaignRepository.findCampaignsByCampaignNameContaining(name);
+    }
+
+    public List<Campaign> getCampaignsByRegion(String region) {
+        return campaignRepository.findCampaignsByTargetAudience_Region(region);
     }
 }

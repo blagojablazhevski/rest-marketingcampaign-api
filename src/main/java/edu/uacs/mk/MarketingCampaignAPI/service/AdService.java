@@ -8,7 +8,6 @@ import java.util.List;
 
 @Service
 public class AdService {
-
     @Autowired
     private AdRepository adRepository;
     @Autowired
@@ -16,6 +15,14 @@ public class AdService {
 
     public List<Ad> getAllAds(){
         return adRepository.findAll();
+    }
+
+    public List<Ad> getAllAdsByRegion(String region){
+        return adRepository.findByCampaign_TargetAudience_Region(region);
+    }
+
+    public List<Ad> getAllAdsByCampaignId(Long id){
+        return adRepository.findByCampaign_CampaignId(id);
     }
 
     public Ad getAdById(Long id){
@@ -38,6 +45,17 @@ public class AdService {
         ad.setCampaign(campaign);
 
         return adRepository.save(ad);
+    }
+
+    public Ad update(Long id, Ad ad) {
+        Ad oldAd = adRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Ad with id " + id + " not found."));
+
+        oldAd.setHeadline(ad.getHeadline());
+        oldAd.setDescription(ad.getDescription());
+        oldAd.setMediaUrl(ad.getMediaUrl());
+
+        return adRepository.save(oldAd);
     }
 
     public void delete (Long id){

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "performancetracking")
 public class PerformanceTracking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -23,14 +23,24 @@ public class CampaignController {
         return campaignService.getCampaignById(id);
     }
 
+    @GetMapping("/name/{name}")
+    List<Campaign> getCampaignByName(@PathVariable("name") String name) {
+        return campaignService.getCampaignsByName(name);
+    }
+
+    @GetMapping("/region/{region}")
+    List<Campaign> getCampaignByRegion(@PathVariable("region") String region) {
+        return campaignService.getCampaignsByRegion(region);
+    }
+
     @PostMapping
     Campaign create(@RequestBody Campaign campaign, @RequestParam Long goalId, @RequestParam Long campaignTypeId, @RequestParam Long targetAudienceId){
         return campaignService.create(campaign, goalId, campaignTypeId, targetAudienceId);
     }
 
-    @PutMapping
-    Campaign update(@RequestBody Campaign campaign) {
-        return campaignService.update(campaign);
+    @PutMapping("/{id}")
+    Campaign update(@PathVariable Long id, @RequestBody Campaign campaign) {
+        return campaignService.update(id, campaign);
     }
 
     @DeleteMapping("/{id}")
@@ -48,10 +58,11 @@ public class CampaignController {
         return campaignService.updateCampaignType(campaignId, typeId);
     }
 
-    @PutMapping("/{targetAudienceId}/campaignType/{targetAudienceId}")
+    @PutMapping("/{campaignId}/campaignType/{targetAudienceId}")
     Campaign updateTargetAudience(@PathVariable Long campaignId, @PathVariable Long targetAudienceId) {
         return campaignService.updateTargetAudience(campaignId, targetAudienceId);
     }
+
 }
 
 

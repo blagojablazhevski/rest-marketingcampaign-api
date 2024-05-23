@@ -26,8 +26,13 @@ public class TargetAudienceService {
         return targetAudienceRepository.save(targetAudience);
     }
 
-    public TargetAudience update(TargetAudience targetAudience) {
-        return targetAudienceRepository.save(targetAudience);
+    public TargetAudience update(Long id, TargetAudience targetAudience) {
+        TargetAudience oldTargetAudience = getTargetAudienceById(id);
+
+        oldTargetAudience.setRegion(targetAudience.getRegion());
+        oldTargetAudience.setAgeRange(targetAudience.getAgeRange());
+
+        return targetAudienceRepository.save(oldTargetAudience);
     }
     public void delete(Long id) {
        targetAudienceRepository.deleteById(id);

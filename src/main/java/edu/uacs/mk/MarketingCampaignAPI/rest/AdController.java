@@ -18,6 +18,16 @@ public class AdController {
         return adService.getAllAds();
     }
 
+    @GetMapping("/region/{region}")
+    List<Ad> getAdsByRegion(@PathVariable("region") String region) {
+        return adService.getAllAdsByRegion(region);
+    }
+
+    @GetMapping("/campaign/{campaignId}")
+    List<Ad> getAdsByRegion(@PathVariable("campaignId") Long campaignId) {
+        return adService.getAllAdsByCampaignId(campaignId);
+    }
+
     @GetMapping("/{id}")
     Ad getAdById(@PathVariable("id") Long id) {
         return adService.getAdById(id);
@@ -28,7 +38,12 @@ public class AdController {
         return adService.create(ad, campaignId);
     }
 
-    @DeleteMapping
+    @PutMapping("/{id}")
+    Ad update(@PathVariable("id") Long id, @RequestBody Ad ad) {
+        return adService.update(id, ad);
+    }
+
+    @DeleteMapping({"/{id}"})
     void delete(@PathVariable("id") Long id) {
         adService.delete(id);
     }

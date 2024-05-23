@@ -28,6 +28,7 @@ public class Ad {
         PerformanceTracking defaultPerformanceTracking = new PerformanceTracking();
         defaultPerformanceTracking.setAd(this);
         defaultPerformanceTracking.setClicks(0);
+        defaultPerformanceTracking.setCost(BigDecimal.ZERO);
         defaultPerformanceTracking.setCostPerClick(BigDecimal.ZERO);
 
         performanceTracking = defaultPerformanceTracking;

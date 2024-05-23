@@ -14,14 +14,14 @@ public class MarketingCampaignApiApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(MarketingCampaignApiApplication.class, args);
 
-		SetCampaignType(context, "Video", "Reach viewers on multiple streaming platforms.");
+		SetCampaignType(context, "Video", "Reach viewers on popular streaming platforms.");
 		SetCampaignType(context, "Display", "Reach customers across many sites and apps.");
 		SetCampaignType(context, "Smart", "Combined video and display solution, perfect for smaller businesses.");
 
 		SetGoal(context, "Purchases", "Someone buys a product or service.");
 		SetGoal(context, "Submit Form", "Potential customer fills out a form.");
 		SetGoal(context, "Phone Call Lead", "Potential customer calls your business.");
-		SetGoal(context, "Page Views", "Someone views a key page (such as an article or product page.");
+		SetGoal(context, "Page Views", "Someone views a key page (such as an article or product page).");
 		SetGoal(context, "Brand Awareness", "Reach a broad audience and build consideration for your brand.");
 	}
 
