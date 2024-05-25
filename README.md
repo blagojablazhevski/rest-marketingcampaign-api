@@ -1,5 +1,10 @@
 # REST Marketing Campaign API
-
+## Table of Contents
+- [Introduction](#Introduction)
+- [1. Target Audience](#1-target-audience)
+    - [Endpoints](#target-audience-endpoints)
+        - [Create New Target Audience](#post-create-new-target-audience)
+        - [Get All Target Audiences](#get-get-all-target-audiences)
 ## Introduction
 Welcome to the documentation of my REST marketing campaign API, a project inspired by the functionality of Google Ads. I created this API as a part of my Computer Interface Programming class.
 
