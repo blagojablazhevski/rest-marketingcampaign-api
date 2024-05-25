@@ -851,36 +851,36 @@ The Ad Entity represents a single advertisement within a marketing campaign. Onc
 **Response Body:**
 
 - **200 OK:**
-```json
-{
-    "adId": 1,
-    "campaign": {
-        "campaignId": 1,
-        "campaignType": {
-            "typeId": 3,
-            "name": "Smart",
-            "description": "Combined video and display solution, perfect for smaller businesses."
+    ```json
+    {
+        "adId": 1,
+        "campaign": {
+            "campaignId": 1,
+            "campaignType": {
+                "typeId": 3,
+                "name": "Smart",
+                "description": "Combined video and display solution, perfect for smaller businesses."
+            },
+            "goal": {
+                "goal_id": 2,
+                "name": "Submit Form",
+                "description": "Potential customer fills out a form."
+            },
+            "targetAudience": {
+                "targetingId": 1,
+                "region": "MK",
+                "ageRange": "18-24"
+            },
+            "campaignName": "UACS: Dedicated to Your Future",
+            "startDate": "2024-05-15",
+            "endDate": "2024-06-15",
+            "budget": 10000.00
         },
-        "goal": {
-            "goal_id": 2,
-            "name": "Submit Form",
-            "description": "Potential customer fills out a form."
-        },
-        "targetAudience": {
-            "targetingId": 1,
-            "region": "MK",
-            "ageRange": "18-24"
-        },
-        "campaignName": "UACS: Dedicated to Your Future",
-        "startDate": "2024-05-15",
-        "endDate": "2024-06-15",
-        "budget": 10000.00
-    },
-    "headline": "UACS: Dedicated to Your Future",
-    "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success!",
-    "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
-}
-```
+        "headline": "UACS: Dedicated to Your Future",
+        "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success!",
+        "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+    }
+    ```
 - **400 Bad Request:** Invalid input
 - **404 Not Found:** Issue not found
 ---
@@ -1182,4 +1182,126 @@ While POST/DELETE operations are restricted, GET and PUT requests are available 
     ]
     ```
 - **204 No Content:** No issues found
+---
+### `PUT` Update Performance Tracking By Id
+
+**Endpoint:** `/tracking/{id}`
+
+**Description:** Updates the clicks, impressions and cost of an existing tracking by **ID**.
+
+**Path Parameters:**
+- `id` (Long): The unique identifier of the tracking.
+
+**Request Body:**
+```json
+{
+    "clicks": 24251,
+    "impressions": 30121,
+    "cost": 36346.57
+}
+```
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    {
+        "trackingId": 1,
+        "ad": {
+            "adId": 1,
+            "campaign": {
+                "campaignId": 1,
+                "campaignType": {
+                    "typeId": 3,
+                    "name": "Smart",
+                    "description": "Combined video and display solution, perfect for smaller businesses."
+                },
+                "goal": {
+                    "goal_id": 2,
+                    "name": "Submit Form",
+                    "description": "Potential customer fills out a form."
+                },
+                "targetAudience": {
+                    "targetingId": 1,
+                    "region": "MK",
+                    "ageRange": "18-24"
+                },
+                "campaignName": "UACS: Dedicated to Your Future",
+                "startDate": "2024-05-15",
+                "endDate": "2024-06-15",
+                "budget": 10000.00
+            },
+            "headline": "UACS: Dedicated to Your Future",
+            "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success!",
+            "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+        },
+        "clicks": 24251,
+        "impressions": 30121,
+        "cost": 36346.57,
+        "costPerClick": 1.50
+    }
+    ```
+- **400 Bad Request:** Invalid input
+- **404 Not Found:** Issue not found
+---
+### `PUT` Update Performance Tracking By Ad Id
+
+**Endpoint:** `/tracking/ad/{adid}`
+
+**Description:** Updates the clicks, impressions and cost of an existing tracking associated with the **ad ID**.
+
+**Path Parameters:**
+- `adid` (Long): The unique identifier of the ad.
+
+**Request Body:**
+```json
+{
+    "clicks": 10,
+    "impressions": 21,
+    "cost": 5.00
+}
+```
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    {
+        "trackingId": 2,
+        "ad": {
+            "adId": 2,
+            "campaign": {
+                "campaignId": 1,
+                "campaignType": {
+                    "typeId": 3,
+                    "name": "Smart",
+                    "description": "Combined video and display solution, perfect for smaller businesses."
+                },
+                "goal": {
+                    "goal_id": 2,
+                    "name": "Submit Form",
+                    "description": "Potential customer fills out a form."
+                },
+                "targetAudience": {
+                    "targetingId": 1,
+                    "region": "MK",
+                    "ageRange": "18-24"
+                },
+                "campaignName": "UACS: Dedicated to Your Future",
+                "startDate": "2024-05-15",
+                "endDate": "2024-06-15",
+                "budget": 10000.00
+            },
+            "headline": "Unlock your future with UACS",
+            "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success! More info at - uacs.edu.mk/home/calls-for-enrollment",
+            "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+        },
+        "clicks": 10,
+        "impressions": 21,
+        "cost": 5.00,
+        "costPerClick": 0.50
+    }
+    ```
+- **400 Bad Request:** Invalid input
+- **404 Not Found:** Issue not found
 ---
