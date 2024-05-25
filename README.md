@@ -1304,4 +1304,122 @@ While POST/DELETE operations are restricted, GET and PUT requests are available 
     ```
 - **400 Bad Request:** Invalid input
 - **404 Not Found:** Issue not found
+
+## 5. Other
+This section covers entities that have too few endpoints to have their own category. These entities include **Goal** and **Campaign Type**, which are with predefined values. They are not modifiable and can only be accessed through GET methods. These entities are essential for defining the objectives and classifications of marketing campaigns.
+
+## Goal Endpoints
+
+### `GET` Get All Goals
+
+**Endpoint:** `/goal`
+
+**Description:** Returns list of all campaign goals.
+
+**Response Body:**
+
+- **200 OK:**
+     ```json
+    [
+        {
+            "goal_id": 1,
+            "name": "Purchases",
+            "description": "Someone buys a product or service."
+        },
+        {
+            "goal_id": 2,
+            "name": "Submit Form",
+            "description": "Potential customer fills out a form."
+        },
+        {
+            "goal_id": 3,
+            "name": "Phone Call Lead",
+            "description": "Potential customer calls your business."
+        },
+        {
+            "goal_id": 4,
+            "name": "Page Views",
+            "description": "Someone views a key page (such as an article or product page)."
+        },
+        {
+            "goal_id": 5,
+            "name": "Brand Awareness",
+            "description": "Reach a broad audience and build consideration for your brand."
+        }
+    ]
+     ```
+- **204 No Content:** No issues found
 ---
+### `GET` Get Goal By Id
+
+**Endpoint:** `/goal/{id}`
+
+**Description:** Returns details of a specified campaign goal by **ID**.
+
+**Path Parameters:**
+- `id` (Long): The unique identifier of the campaign goal.
+
+**Response Body:**
+
+- **200 OK:**
+  ```json
+    {
+        "goal_id": 3,
+        "name": "Phone Call Lead",
+        "description": "Potential customer calls your business."
+    }
+  ```
+- **204 No Content:** No issues found
+
+## Campaign Type Endpoints
+
+### `GET` Get All Goals
+
+**Endpoint:** `/campaigntype`
+
+**Description:** Returns list of all campaign types.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+        [
+        {
+            "typeId": 1,
+            "name": "Video",
+            "description": "Reach viewers on popular streaming platforms."
+        },
+        {
+            "typeId": 2,
+            "name": "Display",
+            "description": "Reach customers across many sites and apps."
+        },
+        {
+            "typeId": 3,
+            "name": "Smart",
+            "description": "Combined video and display solution, perfect for smaller businesses."
+        }
+    ]
+    ```
+- **204 No Content:** No issues found
+---
+### `GET` Get Campaign Type By Id
+
+**Endpoint:** `/campaigntype/{id}`
+
+**Description:** Returns details of a specified campaign type by **ID**.
+
+**Path Parameters:**
+- `id` (Long): The unique identifier of the campaign type.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    {
+        "typeId": 2,
+        "name": "Display",
+        "description": "Reach customers across many sites and apps."
+    }
+    ```
+- **204 No Content:** No issues found
