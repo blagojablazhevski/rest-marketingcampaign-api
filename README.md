@@ -12,7 +12,7 @@ In this documentation, I have created an organized step-by-step "tutorial" that 
 Before creating a campaign, it is essential to define a target audience. The target audience specifies the demographic and geographic criteria for the ad campaign. The target audience includes details such as the region and age range of the intended audience.
 The requests needed to create a target audience are shown below.
 
-## Endpoints for Target Audience
+## Target Audience Endpoints
 
 ### `POST` Create New Target Audience
 
@@ -149,7 +149,7 @@ Before creating a campaign there are 2 things to consider:
 
 The ID of each goal/campaign can be checked anytime with the requests specified here.
 
-## Endpoints for Campaign
+## Campaign Endpoints
 
 ### `POST` Create New Campaign
 
@@ -305,7 +305,7 @@ The ID of each goal/campaign can be checked anytime with the requests specified 
 ---
 ### `GET` Get Campaign By Name
 
-**Endpoint:** `/campaign/{string}`
+**Endpoint:** `/campaign/name/{string}`
 
 **Description:** Returns a list of campaigns that contain the specified **string** in their name.
 
@@ -347,7 +347,7 @@ The ID of each goal/campaign can be checked anytime with the requests specified 
 ---
 ### `GET` Get Campaigns By Region
 
-**Endpoint:** `/campaign/{string}`
+**Endpoint:** `/campaign/region/{string}`
 
 **Description:** Returns a list of campaigns that are created for the specified **region**.
 
@@ -528,6 +528,370 @@ The ID of each goal/campaign can be checked anytime with the requests specified 
 
 **Path Parameters:**
 - `id` (Long): The unique identifier of the campaign.
+
+**Responses:**
+
+- **204 No Content:** Successfully closed
+- **404 Not Found:** Issue not found
+
+## 1. Ads
+The Ad Entity represents a single advertisement within a marketing campaign. Once a marketing campaign is created, users can proceed to create individual ads associated with that campaign.
+
+## Ad Endpoints
+
+### `POST` Create New Ad
+
+**Endpoint:** `/ad`
+
+**Description:** Creates a new ad using the specified query parameters and request body.
+
+**Query parameters:**
+- campaignId (Long): The ID of the campaign.
+
+**Example URL:** `localhost:8080/ad?campaignId=1`
+
+**Request Body:**
+```json
+{
+    "headline": "UACS: A Legacy of Excellence",
+    "description": "UACS is the only internationally accredited University in Republic of Macedonia. It is supported by the Business Council which consists of more than 150 companies organizations and institutions - which provides guest lectures and internships for students",
+    "mediaUrl": "https://www.youtube.com/watch?v=fZ4TFef2v4k"
+}
+```
+- headline - The headline of the ad.
+- description - The description of the ad.
+- mediaUrl - Link to the image/video associated with the ad.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    {
+        "adId": 1,
+        "campaign": {
+            "campaignId": 1,
+            "campaignType": {
+                "typeId": 3,
+                "name": "Smart",
+                "description": "Combined video and display solution, perfect for smaller businesses."
+            },
+            "goal": {
+                "goal_id": 2,
+                "name": "Submit Form",
+                "description": "Potential customer fills out a form."
+            },
+            "targetAudience": {
+                "targetingId": 1,
+                "region": "MK",
+                "ageRange": "18-24"
+            },
+            "campaignName": "UACS: Dedicated to Your Future",
+            "startDate": "2024-05-15",
+            "endDate": "2024-06-15",
+            "budget": 10000
+        },
+        "headline": "UACS: A Legacy of Excellence",
+        "description": "UACS is the only internationally accredited University in Republic of Macedonia. It is supported by the Business Council which consists of more than 150 companies organizations and institutions - which provides guest lectures and internships for students",
+        "mediaUrl": "https://www.youtube.com/watch?v=fZ4TFef2v4k"
+    }
+    ```
+- **400 Bad Request:** Invalid input
+---
+### `GET` Get All Ads
+
+**Endpoint:** `/ad`
+
+**Description:** Returns list of all ads.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    [
+        {
+            "adId": 1,
+            "campaign": {
+                "campaignId": 1,
+                "campaignType": {
+                    "typeId": 3,
+                    "name": "Smart",
+                    "description": "Combined video and display solution, perfect for smaller businesses."
+                },
+                "goal": {
+                    "goal_id": 2,
+                    "name": "Submit Form",
+                    "description": "Potential customer fills out a form."
+                },
+                "targetAudience": {
+                    "targetingId": 1,
+                    "region": "MK",
+                    "ageRange": "18-24"
+                },
+                "campaignName": "UACS: Dedicated to Your Future",
+                "startDate": "2024-05-15",
+                "endDate": "2024-06-15",
+                "budget": 10000.00
+            },
+            "headline": "UACS: Dedicated to Your Future",
+            "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success!",
+            "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+        },
+        {
+            "adId": 2,
+            "campaign": {
+                "campaignId": 1,
+                "campaignType": {
+                    "typeId": 3,
+                    "name": "Smart",
+                    "description": "Combined video and display solution, perfect for smaller businesses."
+                },
+                "goal": {
+                    "goal_id": 2,
+                    "name": "Submit Form",
+                    "description": "Potential customer fills out a form."
+                },
+                "targetAudience": {
+                    "targetingId": 1,
+                    "region": "MK",
+                    "ageRange": "18-24"
+                },
+                "campaignName": "UACS: Dedicated to Your Future",
+                "startDate": "2024-05-15",
+                "endDate": "2024-06-15",
+                "budget": 10000.00
+            },
+            "headline": "Unlock your future with UACS",
+            "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success! More info at - uacs.edu.mk/home/calls-for-enrollment",
+            "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+        }
+    ]
+    ```
+- **204 No Content:** No issues found
+---
+### `GET` Get Ad By Id
+
+**Endpoint:** `/ad/{id}`
+
+**Description:** Returns details of a specified ad by **ID**.
+
+**Path Parameters:**
+- `id` (Long): The unique identifier of the ad.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    {
+        "adId": 1,
+        "campaign": {
+            "campaignId": 1,
+            "campaignType": {
+                "typeId": 3,
+                "name": "Smart",
+                "description": "Combined video and display solution, perfect for smaller businesses."
+            },
+            "goal": {
+                "goal_id": 2,
+                "name": "Submit Form",
+                "description": "Potential customer fills out a form."
+            },
+            "targetAudience": {
+                "targetingId": 1,
+                "region": "MK",
+                "ageRange": "18-24"
+            },
+            "campaignName": "UACS: Dedicated to Your Future",
+            "startDate": "2024-05-15",
+            "endDate": "2024-06-15",
+            "budget": 10000.00
+        },
+        "headline": "UACS: Dedicated to Your Future",
+        "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success!",
+        "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+    }
+    ```
+- **204 No Content:** No issues found
+---
+### `GET` Get Ads By Region
+
+**Endpoint:** `/ad/region/{string}`
+
+**Description:** Returns a list of ads that are created for the specified **region**.
+
+**Example URL:** `localhost:8080/ad/region/MK`
+
+**Path Parameters:**
+- `string` (String): The string to search for within ad regions.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    [
+        {
+            "campaignId": 1,
+            "campaignType": {
+                "typeId": 3,
+                "name": "Smart",
+                "description": "Combined video and display solution, perfect for smaller businesses."
+            },
+            "goal": {
+                "goal_id": 2,
+                "name": "Submit Form",
+                "description": "Potential customer fills out a form."
+            },
+            "targetAudience": {
+                "targetingId": 1,
+                "region": "MK",
+                "ageRange": "18-24"
+            },
+            "campaignName": "UACS: Dedicated to Your Future",
+            "startDate": "2024-05-15",
+            "endDate": "2024-06-15",
+            "budget": 10000.00
+        }
+    ]
+    ```
+- **204 No Content:** No issues found
+---
+### `GET` Get Ads By Campaign
+
+**Endpoint:** `/ad/campaign/{campaignid}`
+
+**Description:** Returns a list of ads that are created for the specified **campaign**.
+
+**Example URL:** `localhost:8080/ad/campaign/1`
+
+**Path Parameters:**
+- `id` (Long): The unique identifier of the campaign.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    [
+        {
+            "adId": 1,
+            "campaign": {
+                "campaignId": 1,
+                "campaignType": {
+                    "typeId": 3,
+                    "name": "Smart",
+                    "description": "Combined video and display solution, perfect for smaller businesses."
+                },
+                "goal": {
+                    "goal_id": 2,
+                    "name": "Submit Form",
+                    "description": "Potential customer fills out a form."
+                },
+                "targetAudience": {
+                    "targetingId": 1,
+                    "region": "MK",
+                    "ageRange": "18-24"
+                },
+                "campaignName": "UACS: Dedicated to Your Future",
+                "startDate": "2024-05-15",
+                "endDate": "2024-06-15",
+                "budget": 10000.00
+            },
+            "headline": "UACS: Dedicated to Your Future",
+            "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success!",
+            "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+        },
+        {
+            "adId": 2,
+            "campaign": {
+                "campaignId": 1,
+                "campaignType": {
+                    "typeId": 3,
+                    "name": "Smart",
+                    "description": "Combined video and display solution, perfect for smaller businesses."
+                },
+                "goal": {
+                    "goal_id": 2,
+                    "name": "Submit Form",
+                    "description": "Potential customer fills out a form."
+                },
+                "targetAudience": {
+                    "targetingId": 1,
+                    "region": "MK",
+                    "ageRange": "18-24"
+                },
+                "campaignName": "UACS: Dedicated to Your Future",
+                "startDate": "2024-05-15",
+                "endDate": "2024-06-15",
+                "budget": 10000.00
+            },
+            "headline": "Unlock your future with UACS",
+            "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success! More info at - uacs.edu.mk/home/calls-for-enrollment",
+            "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+        }
+    ]
+    ```
+- **204 No Content:** No issues found
+---
+### `PUT` Update Ad
+
+**Endpoint:** `/ad/{id}`
+
+**Description:** Updates the headline, description and media url of an ad by **ID**.
+
+**Path Parameters:**
+- `id` (Long): The unique identifier of the ad.
+
+**Request Body:**
+```json
+{
+    "headline": "UACS: Dedicated to Your Future",
+    "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success!",
+    "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+}
+```
+
+**Response Body:**
+
+- **200 OK:**
+```json
+{
+    "adId": 1,
+    "campaign": {
+        "campaignId": 1,
+        "campaignType": {
+            "typeId": 3,
+            "name": "Smart",
+            "description": "Combined video and display solution, perfect for smaller businesses."
+        },
+        "goal": {
+            "goal_id": 2,
+            "name": "Submit Form",
+            "description": "Potential customer fills out a form."
+        },
+        "targetAudience": {
+            "targetingId": 1,
+            "region": "MK",
+            "ageRange": "18-24"
+        },
+        "campaignName": "UACS: Dedicated to Your Future",
+        "startDate": "2024-05-15",
+        "endDate": "2024-06-15",
+        "budget": 10000.00
+    },
+    "headline": "UACS: Dedicated to Your Future",
+    "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success!",
+    "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+}
+```
+- **400 Bad Request:** Invalid input
+- **404 Not Found:** Issue not found
+---
+### `DELETE` Delete Ad
+
+**Endpoint:** `/ad/{id}`
+
+**Description:** Deletes the specified ad by **ID**.
+
+**Path Parameters:**
+- `id` (Long): The unique identifier of the d
 
 **Responses:**
 
