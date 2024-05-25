@@ -117,7 +117,7 @@ The requests needed to create a target audience are shown below.
 - **400 Bad Request:** Invalid input
 - **404 Not Found:** Issue not found
 ---
-### `DELETE` Delete Existing Target Audience
+### `DELETE` Delete Target Audience
 
 **Endpoint:** `/targetaudience/{id}`
 
@@ -520,7 +520,7 @@ The ID of each goal/campaign can be checked anytime with the requests specified 
 - **400 Bad Request:** Invalid input
 - **404 Not Found:** Issue not found
 ---
-### `DELETE` Delete Existing Campaign
+### `DELETE` Delete Campaign
 
 **Endpoint:** `/campaign/{id}`
 
