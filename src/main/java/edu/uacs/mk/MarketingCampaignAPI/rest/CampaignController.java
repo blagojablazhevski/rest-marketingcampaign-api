@@ -57,12 +57,6 @@ public class CampaignController {
     Campaign updateCampaignType(@PathVariable Long campaignId, @PathVariable Long typeId) {
         return campaignService.updateCampaignType(campaignId, typeId);
     }
-
-//    @PutMapping("/{campaignId}/audience/{targetAudienceId}")
-//    Campaign updateTargetAudience(@PathVariable Long campaignId, @PathVariable Long targetAudienceId) {
-//        return campaignService.updateTargetAudience(campaignId, targetAudienceId);
-//    }
-
 }
 
 

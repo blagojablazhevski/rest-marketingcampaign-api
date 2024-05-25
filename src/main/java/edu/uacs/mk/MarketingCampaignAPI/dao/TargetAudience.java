@@ -1,8 +1,6 @@
 package edu.uacs.mk.MarketingCampaignAPI.dao;
 
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.springframework.lang.NonNull;
 
 @Entity
 public class TargetAudience {

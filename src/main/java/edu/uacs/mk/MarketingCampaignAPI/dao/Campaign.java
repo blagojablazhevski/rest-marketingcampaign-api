@@ -2,7 +2,6 @@ package edu.uacs.mk.MarketingCampaignAPI.dao;
 
 import jakarta.persistence.*;
 
-import javax.sound.midi.Track;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

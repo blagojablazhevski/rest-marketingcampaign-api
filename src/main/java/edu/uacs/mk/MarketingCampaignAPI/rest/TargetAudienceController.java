@@ -37,6 +37,4 @@ public class TargetAudienceController {
     TargetAudience update(@PathVariable("id") Long id, @RequestBody TargetAudience targetAudience){
         return targetAudienceService.update(id, targetAudience);
     }
-
-
 }
