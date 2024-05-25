@@ -206,3 +206,330 @@ The ID of each goal/campaign can be checked anytime with the requests specified 
     ```
 - **400 Bad Request:** Invalid input
 ---
+### `GET` Get All Campaigns
+
+**Endpoint:** `/campaign`
+
+**Description:** Returns list of all campaigns.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    [
+        {
+            "campaignId": 1,
+            "campaignType": {
+                "typeId": 2,
+                "name": "Display",
+                "description": "Reach customers across many sites and apps."
+            },
+            "goal": {
+                "goal_id": 4,
+                "name": "Page Views",
+                "description": "Someone views a key page (such as an article or product page)."
+            },
+            "targetAudience": {
+                "targetingId": 1,
+                "region": "MK",
+                "ageRange": "18-24"
+            },
+            "campaignName": "UACS: Dedicated to Your Future",
+            "startDate": "2024-05-15",
+            "endDate": "2024-06-15",
+            "budget": 10000
+        },
+        {
+            "campaignId": 2,
+            "campaignType": {
+                "typeId": 2,
+                "name": "Display",
+                "description": "Reach customers across many sites and apps."
+            },
+            "goal": {
+                "goal_id": 4,
+                "name": "Page Views",
+                "description": "Someone views a key page (such as an article or product page)."
+            },
+            "targetAudience": {
+                "targetingId": 2,
+                "region": "US",
+                "ageRange": "18-24"
+            },
+            "campaignName": "MIT: Earth Day '24 ",
+            "startDate": "2024-04-01",
+            "endDate": "2024-04-22",
+            "budget": 36320.5
+        }
+    ]
+    ```
+- **204 No Content:** No issues found
+---
+### `GET` Get Campaign By Id
+
+**Endpoint:** `/campaign/{id}`
+
+**Description:** Returns details of a specified campaign by **ID**.
+
+**Path Parameters:**
+- `id` (Long): The unique identifier of the campaign.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    {
+        "campaignId": 2,
+        "campaignType": {
+            "typeId": 2,
+            "name": "Display",
+            "description": "Reach customers across many sites and apps."
+        },
+        "goal": {
+            "goal_id": 4,
+            "name": "Page Views",
+            "description": "Someone views a key page (such as an article or product page)."
+        },
+        "targetAudience": {
+            "targetingId": 2,
+            "region": "US",
+            "ageRange": "18-24"
+        },
+        "campaignName": "MIT: Earth Day '24 ",
+        "startDate": "2024-04-01",
+        "endDate": "2024-04-22",
+        "budget": 36320.5
+    }
+    ```
+- **204 No Content:** No issues found
+---
+### `GET` Get Campaign By Name
+
+**Endpoint:** `/campaign/{string}`
+
+**Description:** Returns a list of campaigns that contain the specified **string** in their name.
+
+**Path Parameters:**
+- `string` (String): The string to search for within campaign names.
+
+**Example URL:** `localhost:8080/campaign/name/Earth`
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    [
+        {
+            "campaignId": 2,
+            "campaignType": {
+                "typeId": 2,
+                "name": "Display",
+                "description": "Reach customers across many sites and apps."
+            },
+            "goal": {
+                "goal_id": 4,
+                "name": "Page Views",
+                "description": "Someone views a key page (such as an article or product page)."
+            },
+            "targetAudience": {
+                "targetingId": 2,
+                "region": "US",
+                "ageRange": "18-24"
+            },
+            "campaignName": "MIT: Earth Day '24 ",
+            "startDate": "2024-04-01",
+            "endDate": "2024-04-22",
+            "budget": 36320.5
+        }
+    ]
+    ```
+- **204 No Content:** No issues found
+---
+### `GET` Get Campaigns By Region
+
+**Endpoint:** `/campaign/{string}`
+
+**Description:** Returns a list of campaigns that are created for the specified **region**.
+
+**Example URL:** `localhost:8080/campaign/region/MK`
+
+**Path Parameters:**
+- `string` (String): The string to search for within campaign regions.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    [
+        {
+            "campaignId": 1,
+            "campaignType": {
+                "typeId": 2,
+                "name": "Display",
+                "description": "Reach customers across many sites and apps."
+            },
+            "goal": {
+                "goal_id": 4,
+                "name": "Page Views",
+                "description": "Someone views a key page (such as an article or product page)."
+            },
+            "targetAudience": {
+                "targetingId": 1,
+                "region": "MK",
+                "ageRange": "18-24"
+            },
+            "campaignName": "UACS: Dedicated to Your Future",
+            "startDate": "2024-05-15",
+            "endDate": "2024-06-15",
+            "budget": 10000
+        }
+    ]
+    ```
+- **204 No Content:** No issues found
+---
+### `PUT` Update Campaign
+
+**Endpoint:** `/campaign/{id}`
+
+**Description:** Updates the name, start and end date and budget of a campaign by **ID**.
+
+**Path Parameters:**
+- `id` (Long): The unique identifier of the campaign.
+
+**Request Body:**
+```json
+{
+    "campaignName": "UACS: Master your Future",
+    "startDate": "2024-06-01",
+    "endDate": "2024-08-30",
+    "budget": 12500.75
+}
+```
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    {
+        "campaignId": 1,
+        "campaignType": {
+            "typeId": 2,
+            "name": "Display",
+            "description": "Reach customers across many sites and apps."
+        },
+        "goal": {
+            "goal_id": 4,
+            "name": "Page Views",
+            "description": "Someone views a key page (such as an article or product page)."
+        },
+        "targetAudience": {
+            "targetingId": 1,
+            "region": "MK",
+            "ageRange": "18-24"
+        },
+        "campaignName": "UACS: Master your Future",
+        "startDate": "2024-06-01",
+        "endDate": "2024-08-30",
+        "budget": 12500.75
+    }
+    ```
+- **400 Bad Request:** Invalid input
+- **404 Not Found:** Issue not found
+---
+### `PUT` Update Campaign Goal
+
+**Endpoint:** `/campaign/{campaignid}/goal/{goalid}`
+
+**Description:** Updates the goal of a campaign by **ID**.
+
+**Path Parameters:**
+- `campaignid` (Long): The unique identifier of the campaign.
+- `goalid` (Long): The unique identifier of the goal.
+
+**Example URL:** `localhost:8080/campaign/1/goal/2`
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    {
+        "campaignId": 1,
+        "campaignType": {
+            "typeId": 2,
+            "name": "Display",
+            "description": "Reach customers across many sites and apps."
+        },
+        "goal": {
+            "goal_id": 2,
+            "name": "Submit Form",
+            "description": "Potential customer fills out a form."
+        },
+        "targetAudience": {
+            "targetingId": 1,
+            "region": "MK",
+            "ageRange": "18-24"
+        },
+        "campaignName": "UACS: Dedicated to Your Future",
+        "startDate": "2024-05-15",
+        "endDate": "2024-06-15",
+        "budget": 10000
+    }
+    ```
+- **400 Bad Request:** Invalid input
+- **404 Not Found:** Issue not found
+---
+### `PUT` Update Campaign Type
+
+**Endpoint:** `/campaign/{campaignid}/type/{typeid}`
+
+**Description:** Updates the goal of a type by **ID**.
+
+**Path Parameters:**
+- `campaignid` (Long): The unique identifier of the campaign.
+- `typeid` (Long): The unique identifier of the campaign type.
+
+**Example URL:** `localhost:8080/campaign/1/type/3`
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    {
+        "campaignId": 1,
+        "campaignType": {
+            "typeId": 3,
+            "name": "Smart",
+            "description": "Combined video and display solution, perfect for smaller businesses."
+        },
+        "goal": {
+            "goal_id": 2,
+            "name": "Submit Form",
+            "description": "Potential customer fills out a form."
+        },
+        "targetAudience": {
+            "targetingId": 1,
+            "region": "MK",
+            "ageRange": "18-24"
+        },
+        "campaignName": "UACS: Dedicated to Your Future",
+        "startDate": "2024-05-15",
+        "endDate": "2024-06-15",
+        "budget": 10000.00
+    }
+    ```
+- **400 Bad Request:** Invalid input
+- **404 Not Found:** Issue not found
+---
+### `DELETE` Delete Existing Campaign
+
+**Endpoint:** `/campaign/{id}`
+
+**Description:** Deletes the specified campaign by **ID**.
+
+**Path Parameters:**
+- `id` (Long): The unique identifier of the campaign.
+
+**Responses:**
+
+- **204 No Content:** Successfully closed
+- **404 Not Found:** Issue not found
