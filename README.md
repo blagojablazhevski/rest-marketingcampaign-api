@@ -897,3 +897,289 @@ The Ad Entity represents a single advertisement within a marketing campaign. Onc
 
 - **204 No Content:** Successfully closed
 - **404 Not Found:** Issue not found
+
+## 4. Performance Tracking
+Upon ad creation, a corresponding performance tracking table is automatically generated. For this reason manual tracking creation or deletion is prohibited.
+While POST/DELETE operations are restricted, GET and PUT requests are available for viewing and updating ad performance.
+
+## Performance Tracking Endpoints
+
+### `GET` Get All Performance Trackings
+
+**Endpoint:** `/tracking`
+
+**Description:** Returns list of all performance trackings.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    [
+        {
+            "trackingId": 1,
+            "ad": {
+                "adId": 1,
+                "campaign": {
+                    "campaignId": 1,
+                    "campaignType": {
+                        "typeId": 3,
+                        "name": "Smart",
+                        "description": "Combined video and display solution, perfect for smaller businesses."
+                    },
+                    "goal": {
+                        "goal_id": 2,
+                        "name": "Submit Form",
+                        "description": "Potential customer fills out a form."
+                    },
+                    "targetAudience": {
+                        "targetingId": 1,
+                        "region": "MK",
+                        "ageRange": "18-24"
+                    },
+                    "campaignName": "UACS: Dedicated to Your Future",
+                    "startDate": "2024-05-15",
+                    "endDate": "2024-06-15",
+                    "budget": 10000.00
+                },
+                "headline": "UACS: Dedicated to Your Future",
+                "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success!",
+                "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+            },
+            "clicks": 0,
+            "impressions": 0,
+            "cost": 0.00,
+            "costPerClick": 0.00
+        },
+        {
+            "trackingId": 2,
+            "ad": {
+                "adId": 2,
+                "campaign": {
+                    "campaignId": 1,
+                    "campaignType": {
+                        "typeId": 3,
+                        "name": "Smart",
+                        "description": "Combined video and display solution, perfect for smaller businesses."
+                    },
+                    "goal": {
+                        "goal_id": 2,
+                        "name": "Submit Form",
+                        "description": "Potential customer fills out a form."
+                    },
+                    "targetAudience": {
+                        "targetingId": 1,
+                        "region": "MK",
+                        "ageRange": "18-24"
+                    },
+                    "campaignName": "UACS: Dedicated to Your Future",
+                    "startDate": "2024-05-15",
+                    "endDate": "2024-06-15",
+                    "budget": 10000.00
+                },
+                "headline": "Unlock your future with UACS",
+                "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success! More info at - uacs.edu.mk/home/calls-for-enrollment",
+                "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+            },
+            "clicks": 0,
+            "impressions": 0,
+            "cost": 0.00,
+            "costPerClick": 0.00
+        }
+    ]
+    ```
+- **204 No Content:** No issues found
+---
+### `GET` Get Performance Tracking By Id
+
+**Endpoint:** `/tracking/{id}`
+
+**Description:** Returns details of specified tracking by **ID**.
+
+**Path Parameters:**
+- `id` (Long): The unique identifier of the tracking.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    {
+        "trackingId": 1,
+        "ad": {
+            "adId": 1,
+            "campaign": {
+                "campaignId": 1,
+                "campaignType": {
+                    "typeId": 3,
+                    "name": "Smart",
+                    "description": "Combined video and display solution, perfect for smaller businesses."
+                },
+                "goal": {
+                    "goal_id": 2,
+                    "name": "Submit Form",
+                    "description": "Potential customer fills out a form."
+                },
+                "targetAudience": {
+                    "targetingId": 1,
+                    "region": "MK",
+                    "ageRange": "18-24"
+                },
+                "campaignName": "UACS: Dedicated to Your Future",
+                "startDate": "2024-05-15",
+                "endDate": "2024-06-15",
+                "budget": 10000.00
+            },
+            "headline": "UACS: Dedicated to Your Future",
+            "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success!",
+            "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+        },
+        "clicks": 0,
+        "impressions": 0,
+        "cost": 0.00,
+        "costPerClick": 0.00
+    }
+    ```
+- **204 No Content:** No issues found
+---
+### `GET` Get Performance Tracking By Ad
+
+**Endpoint:** `/tracking/ad/{adid}`
+
+**Description:** Returns details of specified tracking by **ad ID**.
+
+**Example URL:** `localhost:8080/tracking/ad/2`
+
+**Path Parameters:**
+- `adid` (Long): The unique identifier of the ad.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    {
+        "trackingId": 2,
+        "ad": {
+            "adId": 2,
+            "campaign": {
+                "campaignId": 1,
+                "campaignType": {
+                    "typeId": 3,
+                    "name": "Smart",
+                    "description": "Combined video and display solution, perfect for smaller businesses."
+                },
+                "goal": {
+                    "goal_id": 2,
+                    "name": "Submit Form",
+                    "description": "Potential customer fills out a form."
+                },
+                "targetAudience": {
+                    "targetingId": 1,
+                    "region": "MK",
+                    "ageRange": "18-24"
+                },
+                "campaignName": "UACS: Dedicated to Your Future",
+                "startDate": "2024-05-15",
+                "endDate": "2024-06-15",
+                "budget": 10000.00
+            },
+            "headline": "Unlock your future with UACS",
+            "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success! More info at - uacs.edu.mk/home/calls-for-enrollment",
+            "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+        },
+        "clicks": 0,
+        "impressions": 0,
+        "cost": 0.00,
+        "costPerClick": 0.00
+    }
+    ```
+- **204 No Content:** No issues found
+---
+### `GET` Get Performance Trackings By Campaign
+
+**Endpoint:** `/tracking/campaign/{campaignid}`
+
+**Description:** Returns a list of performance trackings that belong to a certain **campaign**.
+
+**Example URL:** `localhost:8080/tracking/campaign/1`
+
+**Path Parameters:**
+- `campaignid` (Long): The unique identifier of the campaign.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    [
+        {
+            "trackingId": 1,
+            "ad": {
+                "adId": 1,
+                "campaign": {
+                    "campaignId": 1,
+                    "campaignType": {
+                        "typeId": 3,
+                        "name": "Smart",
+                        "description": "Combined video and display solution, perfect for smaller businesses."
+                    },
+                    "goal": {
+                        "goal_id": 2,
+                        "name": "Submit Form",
+                        "description": "Potential customer fills out a form."
+                    },
+                    "targetAudience": {
+                        "targetingId": 1,
+                        "region": "MK",
+                        "ageRange": "18-24"
+                    },
+                    "campaignName": "UACS: Dedicated to Your Future",
+                    "startDate": "2024-05-15",
+                    "endDate": "2024-06-15",
+                    "budget": 10000.00
+                },
+                "headline": "UACS: Dedicated to Your Future",
+                "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success!",
+                "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+            },
+            "clicks": 0,
+            "impressions": 0,
+            "cost": 0.00,
+            "costPerClick": 0.00
+        },
+        {
+            "trackingId": 2,
+            "ad": {
+                "adId": 2,
+                "campaign": {
+                    "campaignId": 1,
+                    "campaignType": {
+                        "typeId": 3,
+                        "name": "Smart",
+                        "description": "Combined video and display solution, perfect for smaller businesses."
+                    },
+                    "goal": {
+                        "goal_id": 2,
+                        "name": "Submit Form",
+                        "description": "Potential customer fills out a form."
+                    },
+                    "targetAudience": {
+                        "targetingId": 1,
+                        "region": "MK",
+                        "ageRange": "18-24"
+                    },
+                    "campaignName": "UACS: Dedicated to Your Future",
+                    "startDate": "2024-05-15",
+                    "endDate": "2024-06-15",
+                    "budget": 10000.00
+                },
+                "headline": "Unlock your future with UACS",
+                "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success! More info at - uacs.edu.mk/home/calls-for-enrollment",
+                "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+            },
+            "clicks": 0,
+            "impressions": 0,
+            "cost": 0.00,
+            "costPerClick": 0.00
+        }
+    ]
+    ```
+- **204 No Content:** No issues found
+---
