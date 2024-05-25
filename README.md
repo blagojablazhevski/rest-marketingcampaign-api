@@ -36,7 +36,7 @@
         - [Get Performance Trackings By Campaign](#get-get-performance-trackings-by-campaign)
         - [Update Performance Tracking By Id](#put-update-performance-tracking-by-id)
         - [Update Performance Tracking By Ad Id](#put-update-performance-tracking-by-ad-id)
-- [5. Other](#2-campaign)
+- [5. Other](#5-other)
     - [Goal Endpoints](#goal-endpoints)
         - [Get All Goals](#get-get-all-goals)
         - [Get Goal By Id](#get-get-goal-by-id)
@@ -190,7 +190,7 @@ Before creating a campaign there are 2 things to consider:
   - Display (ID: 2) - Reach customers across many sites and apps.
   - Smart (ID: 3) - Combined video and display solution, perfect for smaller businesses.
 
-The ID of each goal/campaign can be checked anytime with the requests specified here.
+The ID of each goal/campaign can be checked anytime with the requests specified [here](#5-other).
 
 ## Campaign Endpoints
 
