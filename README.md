@@ -2,9 +2,47 @@
 ## Table of Contents
 - [Introduction](#Introduction)
 - [1. Target Audience](#1-target-audience)
-    - [Endpoints](#target-audience-endpoints)
+    - [Target Audience Endpoints](#target-audience-endpoints)
         - [Create New Target Audience](#post-create-new-target-audience)
         - [Get All Target Audiences](#get-get-all-target-audiences)
+        - [Get All Target Audiences By Id](#get-get-target-audience-by-id)
+        - [Update Target Audience](#put-update-target-audience)
+        - [Delete Target Audience](#put-update-target-audience)
+- [2. Campaign](#2-campaign)
+    - [Campaign Endpoints](#campaign-endpoints)
+        - [Create New Campaign](#post-create-new-campaign)
+        - [Get All Campaigns](#get-get-all-campaigns)
+        - [Get Campaign By Id](#get-get-campaign-by-id)
+        - [Get Campaigns By Name](#get-get-campaign-by-name)
+        - [Get Campaigns By Region](#get-get-campaigns-by-region)
+        - [Update Campaign](#put-update-campaign)
+        - [Update Campaign Goal](#put-update-campaign-goal)
+        - [Update Campaign Type](#put-update-campaign-type)
+        - [Delete Campaign](#put-update-campaign-type)
+- [3. Ads](#2-campaign)
+    - [Ad Endpoints](#ad-endpoints)
+        - [Create New Ad](#post-create-new-ad)
+        - [Get All Ads](#get-get-all-ads)
+        - [Get Ad By Id](#get-get-ad-by-id)
+        - [Get Ads By Campaign](#get-get-ads-by-campaign)
+        - [Get Ads By Region](#get-get-ads-by-region)
+        - [Update Ad](#put-update-ad)
+        - [Delete Ad](#delete-delete-ad)
+- [4. Performance Tracking](#2-campaign)
+    - [Performance Tracking Endpoints](#performance-tracking-endpoints)
+        - [Get All Performance Trackings](#get-get-all-performance-trackings)
+        - [Get Performance Tracking By Id](#get-get-performance-tracking-by-id)
+        - [Get Performance Tracking By Ad](#get-get-performance-tracking-by-ad)
+        - [Get Performance Trackings By Campaign](#get-get-performance-trackings-by-campaign)
+        - [Update Performance Tracking By Id](#put-update-performance-tracking-by-id)
+        - [Update Performance Tracking By Ad Id](#put-update-performance-tracking-by-ad-id)
+- [5. Other](#2-campaign)
+    - [Goal Endpoints](#goal-endpoints)
+        - [Get All Goals](#get-get-all-goals)
+        - [Get Goal By Id](#get-get-goal-by-id)
+    - [Campaign Type Endpoints](#goal-endpoints)
+        - [Get All Types](#get-get-campaign-type-by-id)
+        - [Get Type By Id](#get-get-goal-by-id)
 ## Introduction
 Welcome to the documentation of my REST marketing campaign API, a project inspired by the functionality of Google Ads. I created this API as a part of my Computer Interface Programming class.
 
@@ -717,48 +755,6 @@ The Ad Entity represents a single advertisement within a marketing campaign. Onc
     ```
 - **204 No Content:** No issues found
 ---
-### `GET` Get Ads By Region
-
-**Endpoint:** `/ad/region/{string}`
-
-**Description:** Returns a list of ads that are created for the specified **region**.
-
-**Example URL:** `localhost:8080/ad/region/MK`
-
-**Path Parameters:**
-- `string` (String): The string to search for within ad regions.
-
-**Response Body:**
-
-- **200 OK:**
-    ```json
-    [
-        {
-            "campaignId": 1,
-            "campaignType": {
-                "typeId": 3,
-                "name": "Smart",
-                "description": "Combined video and display solution, perfect for smaller businesses."
-            },
-            "goal": {
-                "goal_id": 2,
-                "name": "Submit Form",
-                "description": "Potential customer fills out a form."
-            },
-            "targetAudience": {
-                "targetingId": 1,
-                "region": "MK",
-                "ageRange": "18-24"
-            },
-            "campaignName": "UACS: Dedicated to Your Future",
-            "startDate": "2024-05-15",
-            "endDate": "2024-06-15",
-            "budget": 10000.00
-        }
-    ]
-    ```
-- **204 No Content:** No issues found
----
 ### `GET` Get Ads By Campaign
 
 **Endpoint:** `/ad/campaign/{campaignid}`
@@ -830,6 +826,48 @@ The Ad Entity represents a single advertisement within a marketing campaign. Onc
             "headline": "Unlock your future with UACS",
             "description": "Enroll NOW for the 2024/2025 academic year and ignite your journey to success! More info at - uacs.edu.mk/home/calls-for-enrollment",
             "mediaUrl": "https://www.instagram.com/p/C3hyy2oMOsC/"
+        }
+    ]
+    ```
+- **204 No Content:** No issues found
+---
+### `GET` Get Ads By Region
+
+**Endpoint:** `/ad/region/{string}`
+
+**Description:** Returns a list of ads that are created for the specified **region**.
+
+**Example URL:** `localhost:8080/ad/region/MK`
+
+**Path Parameters:**
+- `string` (String): The string to search for within ad regions.
+
+**Response Body:**
+
+- **200 OK:**
+    ```json
+    [
+        {
+            "campaignId": 1,
+            "campaignType": {
+                "typeId": 3,
+                "name": "Smart",
+                "description": "Combined video and display solution, perfect for smaller businesses."
+            },
+            "goal": {
+                "goal_id": 2,
+                "name": "Submit Form",
+                "description": "Potential customer fills out a form."
+            },
+            "targetAudience": {
+                "targetingId": 1,
+                "region": "MK",
+                "ageRange": "18-24"
+            },
+            "campaignName": "UACS: Dedicated to Your Future",
+            "startDate": "2024-05-15",
+            "endDate": "2024-06-15",
+            "budget": 10000.00
         }
     ]
     ```
@@ -1378,7 +1416,7 @@ This section covers entities that have too few endpoints to have their own categ
 
 ## Campaign Type Endpoints
 
-### `GET` Get All Goals
+### `GET` Get All Campaign Types
 
 **Endpoint:** `/campaigntype`
 
