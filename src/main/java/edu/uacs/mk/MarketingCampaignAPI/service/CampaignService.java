@@ -85,17 +85,17 @@ public class CampaignService {
         return campaignRepository.save(campaign);
     }
 
-    public Campaign updateTargetAudience(Long campaignId, Long targetAudienceId) {
-        Campaign campaign = campaignRepository.findById(campaignId)
-                .orElseThrow(() -> new RuntimeException("Campaign with id " + campaignId + " not found."));
-
-        TargetAudience targetAudience = targetAudienceRepository.findById(targetAudienceId)
-                .orElseThrow(() -> new RuntimeException("CampaignType with id " + targetAudienceId + " not found."));
-
-        campaign.setTargetAudience(targetAudience);
-
-        return campaignRepository.save(campaign);
-    }
+//    public Campaign updateTargetAudience(Long campaignId, Long targetAudienceId) {
+//        Campaign campaign = campaignRepository.findById(campaignId)
+//                .orElseThrow(() -> new RuntimeException("Campaign with id " + campaignId + " not found."));
+//
+//        TargetAudience targetAudience = targetAudienceRepository.findById(targetAudienceId)
+//                .orElseThrow(() -> new RuntimeException("CampaignType with id " + targetAudienceId + " not found."));
+//
+//        campaign.setTargetAudience(targetAudience);
+//
+//        return campaignRepository.save(campaign);
+//    }
 
     public List<Campaign> getCampaignsByName(String name) {
         return campaignRepository.findCampaignsByCampaignNameContaining(name);

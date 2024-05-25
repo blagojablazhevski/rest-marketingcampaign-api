@@ -2,7 +2,6 @@ package edu.uacs.mk.MarketingCampaignAPI.rest;
 
 import edu.uacs.mk.MarketingCampaignAPI.dao.PerformanceTracking;
 import edu.uacs.mk.MarketingCampaignAPI.service.PerformanceTrackingService;
-import org.aspectj.weaver.patterns.PerObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

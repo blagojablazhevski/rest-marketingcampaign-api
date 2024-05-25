@@ -9,7 +9,6 @@ import java.util.List;
 
 @Service
 public class CampaignTypeService {
-
     @Autowired
     private CampaignTypeRepository campaignTypeRepository;
 
@@ -21,5 +20,4 @@ public class CampaignTypeService {
         return campaignTypeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Campaign Type with id " + id + " not found."));
     }
-
 }

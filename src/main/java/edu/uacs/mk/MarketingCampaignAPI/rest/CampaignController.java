@@ -53,15 +53,15 @@ public class CampaignController {
         return campaignService.updateCampaignGoal(campaignId, goalId);
     }
 
-    @PutMapping("/{campaignId}/campaignType/{typeId}")
+    @PutMapping("/{campaignId}/type/{typeId}")
     Campaign updateCampaignType(@PathVariable Long campaignId, @PathVariable Long typeId) {
         return campaignService.updateCampaignType(campaignId, typeId);
     }
 
-    @PutMapping("/{campaignId}/campaignType/{targetAudienceId}")
-    Campaign updateTargetAudience(@PathVariable Long campaignId, @PathVariable Long targetAudienceId) {
-        return campaignService.updateTargetAudience(campaignId, targetAudienceId);
-    }
+//    @PutMapping("/{campaignId}/audience/{targetAudienceId}")
+//    Campaign updateTargetAudience(@PathVariable Long campaignId, @PathVariable Long targetAudienceId) {
+//        return campaignService.updateTargetAudience(campaignId, targetAudienceId);
+//    }
 
 }
 
