@@ -51,7 +51,7 @@ In this documentation, I have created an organized step-by-step "tutorial" that 
 ## Base URL
 `http://localhost:8080/`
 
-## 1. Target Audience
+## Target Audience
 Before creating a campaign, it is essential to define a target audience. The target audience specifies the demographic and geographic criteria for the ad campaign. The target audience includes details such as the region and age range of the intended audience.
 The requests needed to create a target audience are shown below.
 
@@ -174,7 +174,7 @@ The requests needed to create a target audience are shown below.
 - **204 No Content:** Successfully closed
 - **404 Not Found:** Issue not found
 
-## 2. Campaign
+## Campaign
 After sucessfully creating a target audience, a new ad campaign can be created.
 
 Before creating a campaign there are 2 things to consider:
@@ -577,7 +577,7 @@ The ID of each goal/campaign can be checked anytime with the requests specified 
 - **204 No Content:** Successfully closed
 - **404 Not Found:** Issue not found
 
-## 1. Ads
+## Ads
 The Ad Entity represents a single advertisement within a marketing campaign. Once a marketing campaign is created, users can proceed to create individual ads associated with that campaign.
 
 ## Ad Endpoints
@@ -941,7 +941,7 @@ The Ad Entity represents a single advertisement within a marketing campaign. Onc
 - **204 No Content:** Successfully closed
 - **404 Not Found:** Issue not found
 
-## 4. Performance Tracking
+## Performance Tracking
 Upon ad creation, a corresponding performance tracking table is automatically generated. For this reason manual tracking creation or deletion is prohibited.
 While POST/DELETE operations are restricted, GET and PUT requests are available for viewing and updating ad performance.
 
@@ -1348,7 +1348,7 @@ While POST/DELETE operations are restricted, GET and PUT requests are available 
 - **400 Bad Request:** Invalid input
 - **404 Not Found:** Issue not found
 
-## 5. Other
+## Other
 This section covers entities that have too few endpoints to have their own category. These entities include **Goal** and **Campaign Type**, which are with predefined values. They are not modifiable and can only be accessed through GET methods. These entities are essential for defining the objectives and classifications of marketing campaigns.
 
 ## Goal Endpoints
