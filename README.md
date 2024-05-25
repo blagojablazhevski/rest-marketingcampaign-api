@@ -41,8 +41,8 @@
         - [Get All Goals](#get-get-all-goals)
         - [Get Goal By Id](#get-get-goal-by-id)
     - [Campaign Type Endpoints](#goal-endpoints)
-        - [Get All Types](#get-get-campaign-type-by-id)
-        - [Get Type By Id](#get-get-goal-by-id)
+        - [Get All Types](#get-get-all-campaign-types)
+        - [Get Type By Id](#get-get-campaign-type-by-id)
 ## Introduction
 Welcome to the documentation of my REST marketing campaign API, a project inspired by the functionality of Google Ads. I created this API as a part of my Computer Interface Programming class.
 
