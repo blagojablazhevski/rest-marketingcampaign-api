@@ -190,7 +190,7 @@ Before creating a campaign there are 2 things to consider:
   - Display (ID: 2) - Reach customers across many sites and apps.
   - Smart (ID: 3) - Combined video and display solution, perfect for smaller businesses.
 
-The ID of each goal/campaign can be checked anytime with the requests specified [here](#5-other).
+The ID of each goal/campaign can be checked anytime with the requests specified [here](#other).
 
 ## Campaign Endpoints
 
